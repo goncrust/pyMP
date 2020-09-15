@@ -1,5 +1,6 @@
 import dl
 import music_manager
+import vlc
 
 
 class Player:
@@ -12,6 +13,9 @@ class Player:
         # manager
         self.temp_music_manager = music_manager.MusicManager("temp/")
 
+        # vlc_player
+        self.vlc_player = None
+
         self.running = True
         self.loop()
 
@@ -20,6 +24,7 @@ class Player:
         while self.running:
 
             command = input("> ")
+
             command = command.split(" ")
 
             self.command(command)
@@ -27,7 +32,17 @@ class Player:
     def command(self, command):
 
         if command[0] == "play":
-            self.downloader.download(command[1], self.temp_music_manager)
+
+            file = self.downloader.download(
+                command[1], self.temp_music_manager)
+
+            self.vlc_player = vlc.MediaPlayer(file)
+            self.vlc_player.play()
+
         elif command[0] == "quit":
+
+            self.vlc_player.stop()
+
             self.temp_music_manager.delete()
+
             self.running = False

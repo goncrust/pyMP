@@ -14,4 +14,6 @@ class Downloader:
             audio = vid.streams.filter(only_audio=True).first()
             audio.download("temp/")
 
-            manager.register_new(url)
+            file = manager.register_new(url)
+
+            return file

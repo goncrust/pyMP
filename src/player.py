@@ -22,5 +22,12 @@ class Player:
             command = input("> ")
             command = command.split(" ")
 
-            if command[0] == "play":
-                self.downloader.download(command[1], self.temp_music_manager)
+            self.command(command)
+
+    def command(self, command):
+
+        if command[0] == "play":
+            self.downloader.download(command[1], self.temp_music_manager)
+        elif command[0] == "quit":
+            self.temp_music_manager.delete()
+            self.running = False

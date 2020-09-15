@@ -18,7 +18,7 @@ class MusicManager:
     def register_new(self, url):
 
         file = None
-        for o in os.listdir("temp/"):
+        for o in os.listdir(self.directory):
             found = False
 
             for l in self.dir_list:
@@ -30,3 +30,7 @@ class MusicManager:
                 break
 
         self.dir_list[o] = url
+
+    def delete(self):
+        for m in os.listdir(self.directory):
+            os.remove(self.directory + m)

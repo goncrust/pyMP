@@ -33,11 +33,27 @@ class Player:
 
         if command[0] == "play":
 
-            file = self.downloader.download(
-                command[1], self.temp_music_manager)
+            if command[1] == "-u":
+                file = self.downloader.download(
+                    command[2], self.temp_music_manager)
+            else:
+                c = 0
+                keyword = ""
+                for s in command:
+                    if c != 0:
+                        keyword += s
+                    c += 1
+
+                url = self.downloader.youtube_dl_query(keyword)
+                file = self.downloader.download(
+                    url, self.temp_music_manager)
 
             self.vlc_player = vlc.MediaPlayer(file)
             self.vlc_player.play()
+
+        elif command[0] == "download":
+            pass
+            # future
 
         elif command[0] == "quit":
 

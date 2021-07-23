@@ -13,8 +13,8 @@
 
 1. Install [python 3.9](https://www.python.org/)
 1. Install the required python librarys:
-  - `pip install youtube_dl`
-  - `pip install youtube-search-python`
+    - `pip install youtube_dl`
+    - `pip install youtube-search-python`
 1. Clone the repo: 'git clone https://github.com/goncrust/pyMP.git'
 1. Go to the directory: 'cd pyMP'
 1. Run: 'python src/main.py'

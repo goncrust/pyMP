@@ -1,8 +1,7 @@
-import player
+import sys
+import query
+import downloader
 
+qresult = query.queryName(sys.argv[1], 5, True)
 
-def main():
-    player.Player()
-
-
-main()
+downloader.downloadYTURL(qresult[1], qresult[0])

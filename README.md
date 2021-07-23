@@ -21,9 +21,9 @@
 
 ## Usage
 
-usage: python src/main.py [mode] [options] [...]
+```usage: python src/main.py [mode] [options] [...]
 
-```modes:
+modes:
 	D			Download mode.
 	Q			Query mode.
 

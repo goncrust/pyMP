@@ -21,7 +21,8 @@
 
 ## Usage
 
-```usage: python src/main.py [mode] [options] [...]
+```
+usage: python src/main.py [mode] [options] [...]
 
 modes:
 	D			Download mode.

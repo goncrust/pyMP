@@ -1,3 +1,11 @@
+'''
+pyMP (https://github.com/goncrust/pyMP)
+
+Copyright (C) 2021 goncrust
+Released under the GPL v3.0
+https://github.com/goncrust/pyMP/blob/master/LICENSE.md
+'''
+
 import sys
 import query
 import downloader

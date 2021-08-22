@@ -27,6 +27,11 @@ def downloadYTURL(url, name, path=None, pl=False):
         ydl_opts['outtmpl'] = os.getcwd() + f'/{name}.mp3'
     else:
         if (not pl):
+
+            # fix error "audio conversion failed: file:mp3: Invalid argument" (.mp3 not at end of path)
+            if (path[len(path) - 4:] != ".mp3"):
+                path = path + ".mp3"
+
             ydl_opts['outtmpl'] = path 
         else:
             ydl_opts['outtmpl'] = path + f'/{name}.mp3'

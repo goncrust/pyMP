@@ -1,7 +1,20 @@
+
+'''
+pyMP (https://github.com/goncrust/pyMP)
+
+Information gathering about youtube videos/playlists
+
+Copyright (C) 2021 goncrust
+Released under the GPL v3.0
+https://github.com/goncrust/pyMP/blob/master/LICENSE.md
+'''
+
 from youtubesearchpython import VideosSearch 
 import youtube_dl
 import math
 
+# Query video title, URL and duration;
+# prompt user to select from results
 def queryName(keyWord, count, ask=0):
     
     result = VideosSearch(keyWord, limit=count) 
@@ -35,6 +48,7 @@ def queryName(keyWord, count, ask=0):
     else:
         return resultParsed
 
+# Query video title from URL
 def queryNameFromURL(url):
     
     with youtube_dl.YoutubeDL({}) as ydl:
@@ -42,12 +56,15 @@ def queryNameFromURL(url):
 
     return info['title']
 
+# Convert seconds to minutes
 def secondsToMinutes(seconds):
     minutes = math.floor(seconds / 60)
     rseconds = seconds - (minutes*60)
 
     return str(minutes) + ":" + str(rseconds)
 
+# Query playlist videos titles, URLs and durations;
+# prompt user to confirm
 def queryPlaylistInfo(url, ask=0):
     
     videosParsed = {}

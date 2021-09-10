@@ -22,6 +22,10 @@ def downloadYTURL(url, name, path=None, pl=False):
                 'preferredquality': '192', }]
     }
     
+    # Fix name errors
+    if ("%" in name):
+        name = name.replace("%", "")
+
     # Set path
     if (path == None):
         ydl_opts['outtmpl'] = os.getcwd() + f'/{name}.mp3'

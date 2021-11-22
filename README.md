@@ -11,7 +11,7 @@
 
 ### Step by step
 
-1. Install [python 3.9](https://www.python.org/)
+1. Install [python 3](https://www.python.org/)
 1. Install the required python librarys:
     - `pip install youtube_dl`
     - `pip install youtube-search-python`

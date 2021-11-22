@@ -17,12 +17,12 @@
     - `pip install youtube-search-python`
 1. Clone the repo: `git clone https://github.com/goncrust/pyMP.git`
 1. Go to the directory: `cd pyMP`
-1. Run: `python src/main.py`
+1. Run: `python3 src/main.py`
 
 ## Usage
 
 ```
-usage: python src/main.py [mode] [options] [...]
+usage: python3 src/main.py [mode] [options] [...]
 
 modes:
 	D			Download mode.

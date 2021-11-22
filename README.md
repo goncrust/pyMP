@@ -8,6 +8,7 @@
 - python (3 or above)
 - youtube_dl
 - youtube-search-python
+- ffmpeg
 
 ### Step by step
 

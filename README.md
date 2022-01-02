@@ -6,7 +6,7 @@
 ### Requirements
 
 - python (3 or above)
-- yt_dlp (fork of youtube_dl)
+- yt-dlp (fork of youtube-dl)
 - youtube-search-python
 - ffmpeg
 
@@ -37,3 +37,7 @@ options:
 	-p <URL>		URL for playlist download.
 	-o <output file>	 Set destination file name and location.
 ```
+
+## License
+
+The source code is licensed under the open source GPL v3.0. License is available [here](https://github.com/goncrust/pyMP/blob/master/LICENSE.md).

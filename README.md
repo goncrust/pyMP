@@ -13,7 +13,7 @@
 ### Step by step
 
 1. Install [python 3](https://www.python.org/)
-1. Install the required python librarys:
+1. Install the required python libraries:
     - `pip install yt-dlp`
     - `pip install youtube-search-python`
 1. Clone the repo: `git clone https://github.com/goncrust/pyMP.git`

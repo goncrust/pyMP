@@ -3,7 +3,7 @@ pyMP (https://github.com/goncrust/pyMP)
 
 YouTube audio downloader
 
-Copyright (C) 2021 goncrust
+Copyright (C) 2022 goncrust
 Released under the GPL v3.0
 https://github.com/goncrust/pyMP/blob/master/LICENSE.md
 '''

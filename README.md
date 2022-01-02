@@ -35,13 +35,14 @@ options:
 	-s <number>		Query size (default: 5).
 	-u <URL>		URL for download.
 	-p <URL>		URL for playlist download.
-	-o <output file>	 Set destination file name and location (default: current/working directory, filename=video's title.mp3).
+	-o <output file>	 Set destination file name and location (default: current/working directory
+									and filename = video title.mp3).
 ```
 
 ### Examples
 
 - Be prompted to select a video from youtube search to download: `python3 src/main.py D -k duality -o "~/Music/Slipknot-Duality.mp3"`
-- Download directly from a video's url: `python3 src/main.py D -u "https://www.youtube.com/watch?v=dQw4w9WgXcQ"`
+- Download directly from a video url: `python3 src/main.py D -u "https://www.youtube.com/watch?v=dQw4w9WgXcQ"`
 - Download a playlist: `python3 src/main.py D -p "https://www.youtube.com/watch?v=cwp9ojsvAus&list=PLU6YJ-jFUEF4EAoUeBkWac1di0W2fNT1_" -o ~/Music/simbiose/`
 
 ## License

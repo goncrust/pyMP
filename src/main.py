@@ -154,7 +154,7 @@ def help_page():
     print("\t-s <number>\t\tQuery size (default: 5).")
     print("\t-u <URL>\t\tURL for download.")
     print("\t-p <URL>\t\tURL for playlist download.")
-    print("\t-o <output file>\tSet destination file name and location.")
+    print("\t-o <output file>\tSet destination file name and location (default: current/working directory, filename=video's title.mp3).")
 
     exit(0)
 

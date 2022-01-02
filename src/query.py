@@ -1,24 +1,37 @@
-
 '''
 pyMP (https://github.com/goncrust/pyMP)
 
 Information gathering about youtube videos/playlists
 
-Copyright (C) 2021 goncrust
+Copyright (C) 2022 goncrust
 Released under the GPL v3.0
 https://github.com/goncrust/pyMP/blob/master/LICENSE.md
 '''
 
 from youtubesearchpython import VideosSearch 
-import youtube_dl
-import math
+from yt_dlp import YoutubeDL
+import utils
 
-# Query video title, URL and duration;
-# prompt user to select from results
-def queryName(keyWord, count, ask=0):
+
+class DowloadLogger(object):
+    def debug(self, msg):
+        pass
+
+    def warning(self, msg):
+        pass
+
+    def error(self, msg):
+        print(msg)
+
+
+ydl_opts = {'logger': DowloadLogger()}
+
+
+def queryKeywordPlus(keyword, count):
+    """Query video title, URL and duration
+    """
     
-    result = VideosSearch(keyWord, limit=count) 
-    
+    result = VideosSearch(keyword, limit=count) 
     resultParsed = {}
     
     i = 1
@@ -29,79 +42,46 @@ def queryName(keyWord, count, ask=0):
         resultParsed[str(i)]['duration'] = r['duration']
 
         i += 1
+
+    if not len(resultParsed):
+        return -1
    
-    if ask:
-        if ask == 2: 
-            print("\nPick one:\n")
-        elif ask == 1:
-            print("\nResults:\n")
+    return resultParsed
 
-        for rp in resultParsed:
-            print(rp + "\t" +  resultParsed[rp]['duration'] + "\t\t" + resultParsed[rp]['title'])
-        
-        if ask == 2:
-            print("\n> ", end="")
-            option = input()
 
-            return [resultParsed[option]['title'], resultParsed[option]['link']]
-    
-    else:
-        return resultParsed
-
-# Query video title from URL
 def queryNameFromURL(url):
+    """Query video title from URL
+    """
     
-    with youtube_dl.YoutubeDL({}) as ydl:
+    with YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=False)
+
+    if info is None:
+        return -1
 
     return info['title']
 
-# Convert seconds to minutes
-def secondsToMinutes(seconds):
-    minutes = math.floor(seconds / 60)
-    rseconds = seconds - (minutes*60)
 
-    return str(minutes) + ":" + str(rseconds)
+def queryPlaylistInfo(url):
+    """Query playlist videos titles, URLs and durations; prompt user to confirm
 
-# Query playlist videos titles, URLs and durations;
-# prompt user to confirm
-def queryPlaylistInfo(url, ask=0):
+    if ask == 0: just return the query
+    elif ask == 1: print
+    elif ask == 2: print and prompt user to confirm download
+    """
     
     videosParsed = {}
 
-    with youtube_dl.YoutubeDL({}) as ydl:
+    with YoutubeDL(ydl_opts) as ydl:
         videos = ydl.extract_info(url, download=False)
+
+    if videos is None:
+        return -1
 
     for v in videos['entries']:
         videosParsed[v['title']] = {} 
         videosParsed[v['title']]['link'] = v['webpage_url']
         videosParsed[v['title']]['duration'] = v['duration']
 
-    if ask == 1 or ask == 2:
-        print("\nPlaylist:\n")
+    return videosParsed
 
-        i = 1
-        for vp in videosParsed:
-            print(str(i) + "\t" + secondsToMinutes(videosParsed[vp]['duration']) + "\t\t" + vp)
-
-            i += 1
-        
-        if (ask == 2):
-            print("\nConfirm download (y/n): ", end="")
-
-            ans = input()
-
-            if (ans.lower()[0] == 'y'):
-                returnVideos = [] 
-
-                for vp in videosParsed:
-                    returnVideos.append([vp, videosParsed[vp]['link']])
-
-                return returnVideos
-            else:
-                return
-        else:
-            return
-
-    elif ask == 0:
-        return videosParsed

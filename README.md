@@ -35,8 +35,7 @@ options:
 	-s <number>		Query size (default: 5).
 	-u <URL>		URL for download.
 	-p <URL>		URL for playlist download.
-	-o <output file>	 Set destination file name and location (default: current/working directory
-									and filename = video title.mp3).
+	-o <output file>	Set destination file name and location (default: [current dir]/[video title].mp3).
 ```
 
 ### Examples
